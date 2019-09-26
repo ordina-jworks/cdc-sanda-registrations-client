@@ -1,0 +1,93 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Long Hu Men Tournaments
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content align-items-center>
+    <form #form="ngForm" novalidate>
+        <ion-grid>
+            <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center
+                         padding
+                         size-md="6" size-lg="5" size-xs="12">
+                    <h5>Fighter details</h5>
+                    <div padding-end>
+                        <ion-item>
+                            <ion-label position="stacked">Open tournaments</ion-label>
+                            <ion-select placeholder="Select tournament"
+                                        name="selectedTournamentInput"
+                                        [(ngModel)]="selectedTournament"
+                                        (ionChange)="onGenderChange($event)">
+                                <ion-select-option [value]="tournament"
+                                                   *ngFor="let tournament of tournamentList | async; trackBy: trackTournamentList">
+                                    {{tournament.name}}
+                                </ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Email</ion-label>
+                            <ion-input name="emailInput" type="input" placeholder="Enter your email here"
+                                       [(ngModel)]="registrant.email"
+                                       required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Name</ion-label>
+                            <ion-input name="nameInput"
+                                       placeholder="Enter name here"
+                                       type="input"
+                                       [(ngModel)]="registrant.name"
+                                       required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Firstname</ion-label>
+                            <ion-input name="firstNameInput"
+                                       placeholder="Enter first name here"
+                                       type="input"
+                                       [(ngModel)]="registrant.firstName"
+                                       required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Birthdate</ion-label>
+                            <ion-datetime [(ngModel)]="registrant.birthDate"
+                                          name="birthDateInput"
+                                          displayFormat="D MMMM YYYY"
+                                          placeholder="Select birthdate">
+                            </ion-datetime>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Weight</ion-label>
+                            <ion-input name="weightInput"
+                                       text-right
+                                       type="number"
+                                       placeholder="weight"
+                                       [(ngModel)]="registrant.weight"
+                                       required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Gender</ion-label>
+                            <ion-select placeholder="Select One" (ionChange)="onGenderChange($event)">
+                                <ion-select-option value="f">Female</ion-select-option>
+                                <ion-select-option value="m">Male</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">Club</ion-label>
+                            <ion-input name="clubInput" type="input" placeholder="Enter your clubname here"
+                                       [(ngModel)]="registrant.club"
+                                       required></ion-input>
+                        </ion-item>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
+<ion-footer no-border>
+    <ion-button type="button" [disabled]="form.invalid || !selectedTournament"
+                (click)="onRegisterClick()"
+                expand="block">Register
+    </ion-button>
+</ion-footer>
