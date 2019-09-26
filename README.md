@@ -11,18 +11,27 @@ npm i -g ionic @angular/cli
 ```
 
 ## Installation
-
 Clone this repository
  
 ```
 npm i
 ```
 
-## Dev environment
+## Dev environment on localhost:4200
 ```
-ng serve
+npm run hmr
 ```
 
+## Run a mock server on localhost:8540
+You will need wiremock stubs to reach any endpoint
+```
+npm run wiremock
+```
+
+## Publish pact files to the pact broker
+```
+npm run pact:publish
+```
 
 #### Other services that are used
 - [sanda-registrations](https://github.com/ordina-jworks/cdc-sanda-registrations)

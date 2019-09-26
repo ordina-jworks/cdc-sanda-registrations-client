@@ -13,7 +13,6 @@
     "now-build": "ng build --prod",
     "clone-stubs": "rm -rf wiremock/mappings && git clone https://some-stub-repository.git wiremock/mappings",
     "wiremock": "java -jar ./wiremock/wiremock.jar --port=1234 --root-dir=wiremock/",
-    "now": "now && now alias https://lhm-tournament-registration.dsbr.now.sh fronttier.io",
     "pact:publish": "ts-node --project scripts/tsconfig.json scripts/publish-pacts.ts"
   },
   "engines": {
